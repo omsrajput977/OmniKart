@@ -2,9 +2,12 @@ import Customer from "../models/customer.model.js"
 import bcrypt from 'bcrypt'
 import { genToken } from "../utils/generateToken.js"
 
+const isProduction = process.env.NODE_ENV === 'production'
+
 const cookiesOptions = {
     httpOnly: true,
-    secure: true
+    secure: isProduction,
+    sameSite: isProduction ? 'none' : 'lax'
 }
 
 export const registerCustomer = async (req, res) => {

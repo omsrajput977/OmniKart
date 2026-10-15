@@ -1,0 +1,50 @@
+services:
+  # ==========================================
+  # 1. OmniKart Backend Web Service (Node.js)
+  # ==========================================
+  - type: web
+    name: omnikart-api
+    runtime: node
+    plan: free
+    region: oregon
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: dbUrl
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: RAZORPAY_KEY_ID
+        sync: false
+      - key: RAZORPAY_KEY_SECRET
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
+
+  # ==========================================
+  # 2. OmniKart Frontend Static Site (Vite React)
+  # ==========================================
+  - type: web
+    name: omnikart-web
+    runtime: static
+    plan: free
+    region: oregon
+    rootDir: frontend/vite-project
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_URL
+        sync: false
