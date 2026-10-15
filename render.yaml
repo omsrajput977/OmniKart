@@ -36,8 +36,6 @@ services:
   - type: web
     name: omnikart-web
     runtime: static
-    plan: free
-    region: oregon
     rootDir: frontend/vite-project
     buildCommand: npm install && npm run build
     staticPublishPath: dist
