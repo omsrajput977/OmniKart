@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-bg-linen: #FAF7F2;
+    --color-surface-sand: #F4EFEA;
+    --color-border-warm: #EAE4DC;
+    --color-text-main: #231F1D;
+    --color-text-muted: #7E776F;
+    --color-brand-terracotta: #BA5D38;
+    --color-brand-dark: #1E1B18;
+  }
+
+  body {
+    background-color: #FAF7F2;
+    color: #231F1D;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+.font-editorial {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-sans-ui {
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+}

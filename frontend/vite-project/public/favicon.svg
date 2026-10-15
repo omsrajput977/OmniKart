@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <radialGradient id="omniBg" cx="50%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#2B2622" />
+      <stop offset="100%" stop-color="#161412" />
+    </radialGradient>
+    <linearGradient id="terracottaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D97047" />
+      <stop offset="100%" stop-color="#BA5D38" />
+    </linearGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Luxury Matte Black Tile with Soft Chamfer -->
+  <rect width="64" height="64" rx="16" fill="url(#omniBg)" />
+  <rect x="1.25" y="1.25" width="61.5" height="61.5" rx="14.75" fill="none" stroke="#BA5D38" stroke-width="1.2" stroke-opacity="0.38" />
+
+  <!-- Editorial Luxury Serif 'O' Mark (Vectorized) -->
+  <path
+    filter="url(#softGlow)"
+    fill="#FAF7F2"
+    fill-rule="evenodd"
+    d="M 32,11.5 C 42.5,11.5 48.5,19.8 48.5,32 C 48.5,44.2 42.5,52.5 32,52.5 C 21.5,52.5 15.5,44.2 15.5,32 C 15.5,19.8 21.5,11.5 32,11.5 Z M 32,15.2 C 38.6,15.2 41.6,22 41.6,32 C 41.6,42 38.6,48.8 32,48.8 C 25.4,48.8 22.4,42 22.4,32 C 22.4,22 25.4,15.2 32,15.2 Z"
+  />
+
+  <!-- Curated Terracotta Accent Sphere -->
+  <circle cx="45.5" cy="18.5" r="4.5" fill="url(#terracottaGrad)" filter="url(#softGlow)" />
+  <circle cx="44.2" cy="17.2" r="1.3" fill="#FFFFFF" opacity="0.65" />
+</svg>

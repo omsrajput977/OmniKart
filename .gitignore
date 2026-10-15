@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+*/node_modules/
+*/*/node_modules/
+
+# Environment Variables & Secrets (preserve .env.example)
+.env
+.env.*
+*/.env
+*/.env.*
+*.env
+!.env.example
+!*/.env.example
+
+# Production Build Output
+dist/
+dist-ssr/
+build/
+*/dist/
+
+# OS and Editor Artifacts
+.DS_Store
+*/.DS_Store
+*/*/.DS_Store
+.idea/
+.vscode/
+*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
