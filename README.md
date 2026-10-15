@@ -2,6 +2,12 @@
 
 > An editorial lifestyle & curated design e-commerce web platform engineered with the **MERN** stack (MongoDB, Express, React 19, Node.js), powered by **Tailwind CSS v4**, **Redux Toolkit**, **Cloudinary**, and **Razorpay Test-Mode Payment Gateway**.
 
+[![Live Production Demo](https://img.shields.io/badge/Live%20Demo-omnikart--web.onrender.com-BA5D38?style=for-the-badge&logo=render&logoColor=white)](https://omnikart-web.onrender.com/)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-1E1B18?style=for-the-badge&logo=github&logoColor=white)](https://github.com/omsrajput977/OmniKart)
+
+🌐 **Live Application**: [https://omnikart-web.onrender.com/](https://omnikart-web.onrender.com/)  
+⚙️ **Backend API**: [https://omnikart-api.onrender.com/](https://omnikart-api.onrender.com/)
+
 ---
 
 ## 📖 Table of Contents
@@ -480,6 +486,16 @@ cd frontend/vite-project
 npm run dev
 ```
 *Frontend runs at:* `http://localhost:5173`
+
+---
+
+### 🌐 Live Production Deployment
+
+| Service | Environment | Live URL |
+|---|---|---|
+| **Frontend Application** | Production (Render Static Site) | [https://omnikart-web.onrender.com/](https://omnikart-web.onrender.com/) |
+| **Backend REST API** | Production (Render Web Service) | [https://omnikart-api.onrender.com/](https://omnikart-api.onrender.com/) |
+| **Repository** | GitHub | [https://github.com/omsrajput977/OmniKart](https://github.com/omsrajput977/OmniKart) |
 
 ---
 
