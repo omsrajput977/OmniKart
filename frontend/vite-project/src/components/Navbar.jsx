@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCart } from '../redux/cartSlice.js';
+import { useAuth } from '../context/AuthContent';
 
 function Navbar({ customer, onLogout }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [search, setSearch] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { logout } = useAuth();
 
   const { cartItems } = useSelector((state) => state.cart);
 
@@ -16,9 +18,12 @@ function Navbar({ customer, onLogout }) {
     dispatch(fetchCart());
   }, [dispatch]);
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     if (onLogout) {
-      onLogout();
+      await onLogout();
+    } else {
+      await logout();
+      navigate('/', { replace: true });
     }
   };
 

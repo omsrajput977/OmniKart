@@ -44,7 +44,7 @@ const Cart = () => {
   
   const handleLogout = async () => {
     await logout();
-    navigate('/login', { replace: true });
+    navigate('/', { replace: true });
   };
 
   const totalItemsCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);

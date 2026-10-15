@@ -206,7 +206,7 @@ const Checkout = () => {
 
   const handleLogout = async () => {
     await logout();
-    navigate('/login', { replace: true });
+    navigate('/', { replace: true });
   };
 
   // If cart is empty, show helpful redirect

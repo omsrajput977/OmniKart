@@ -100,7 +100,7 @@ function Home() {
 
   const handleLogout = async () => {
     await logout();
-    navigate('/login', { replace: true });
+    navigate('/', { replace: true });
   };
 
   const handleQuickAdd = async (item) => {
