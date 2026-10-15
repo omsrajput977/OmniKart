@@ -15,11 +15,29 @@ dotenv.config()
 
 const PORT = process.env.PORT || 8085
 
-mongoose.connect(process.env.dbUrl).then(() => {
-    console.log("DB connected!!!")
-}).catch((error) => {
-    console.log(error)
-})
+let dbConnectionError = null
+
+const connectDB = async () => {
+    try {
+        const rawUrl = process.env.dbUrl || process.env.DB_URL || ''
+        const url = rawUrl.trim()
+        if (!url) {
+            dbConnectionError = 'process.env.dbUrl is empty or not set'
+            console.error(dbConnectionError)
+            return
+        }
+        await mongoose.connect(url, {
+            serverSelectionTimeoutMS: 8000,
+        })
+        dbConnectionError = null
+        console.log("DB connected successfully!!!")
+    } catch (error) {
+        dbConnectionError = error.message
+        console.error("DB connection error:", error.message)
+    }
+}
+
+connectDB()
 
 const allowedOrigins = [
     'http://localhost:5173',
@@ -48,12 +66,19 @@ app.use(express.json())
 app.use(cookieParser())
 
 // Health check endpoint for deployment diagnostics
-app.get('/health', (req, res) => {
+app.get('/health', async (req, res) => {
+    if (mongoose.connection.readyState !== 1) {
+        await connectDB()
+    }
     const dbState = ['disconnected', 'connected', 'connecting', 'disconnecting'][mongoose.connection.readyState] || 'unknown'
+    const rawUrl = process.env.dbUrl || process.env.DB_URL || ''
     res.json({
         status: 'ok',
         database: dbState,
-        hasDbUrl: Boolean(process.env.dbUrl),
+        dbError: dbConnectionError,
+        hasDbUrl: Boolean(rawUrl),
+        dbUrlLength: rawUrl.trim().length,
+        dbUrlPrefix: rawUrl.trim().substring(0, 16) + '...',
         hasJwtSecret: Boolean(process.env.JWT_SECRET),
         nodeEnv: process.env.NODE_ENV || 'development'
     })
