@@ -46,6 +46,19 @@ app.use(cors({
 
 app.use(express.json())
 app.use(cookieParser())
+
+// Health check endpoint for deployment diagnostics
+app.get('/health', (req, res) => {
+    const dbState = ['disconnected', 'connected', 'connecting', 'disconnecting'][mongoose.connection.readyState] || 'unknown'
+    res.json({
+        status: 'ok',
+        database: dbState,
+        hasDbUrl: Boolean(process.env.dbUrl),
+        hasJwtSecret: Boolean(process.env.JWT_SECRET),
+        nodeEnv: process.env.NODE_ENV || 'development'
+    })
+})
+
 app.use('/customers', customerRoutes)
 app.use('/products', productRoutes)
 app.use('/wishlist', wishlistRoutes)

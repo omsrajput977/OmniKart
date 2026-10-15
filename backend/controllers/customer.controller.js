@@ -54,7 +54,8 @@ export const registerCustomer = async (req, res) => {
 
 
     } catch (error) {
-        res.status(500).json({ message: 'Internal Server Errorr', error: error })
+        console.error('Registration Error:', error)
+        res.status(500).json({ message: 'Internal Server Error', error: error.message || error.toString() })
     }
 }
 
@@ -85,7 +86,8 @@ export const loginCustomer = async (req, res) => {
         })
 
     } catch (error) {
-        res.status(500).json({ message: 'Internal Server Errorr', error: error })
+        console.error('Login Error:', error)
+        res.status(500).json({ message: 'Internal Server Error', error: error.message || error.toString() })
     }
 }
 
@@ -111,7 +113,8 @@ export const logoutCustomer = async (req, res) => {
         })
 
     } catch (error) {
-        res.status(500).json({ message: 'Internal Server Errorr', error: error })
+        console.error('Logout Error:', error)
+        res.status(500).json({ message: 'Internal Server Error', error: error.message || error.toString() })
     }
 }
 
